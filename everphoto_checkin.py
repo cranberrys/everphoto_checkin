@@ -1,6 +1,6 @@
 import os
 
-from ac_api import AcApplication
+from ac_api import Module
 from module.everphoto_checkin.handle.everphoto_api import EverPhoto
 from .handle.handle_task import ECView, ec_task_action, ec_task_add, ec_task_smscode, ConfigView
 from .handle.scheduler import auto_check_in
@@ -18,7 +18,7 @@ async def init_callback(app):
 
 def everphoto_checkin():
     static_path = os.path.dirname(os.path.abspath(__file__)) + '/template'
-    app = AcApplication()
+    app = Module()
     app.ac_set_static_path(static_path)
 
     app.router.add_view('/task', ECView, name='index')
